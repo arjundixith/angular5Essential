@@ -1,0 +1,26 @@
+
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+
+div.dashboard {
+    background-color: #33b9ce;
+    height: 150px;
+    
+}
+
+.four-agileits {
+    background: #5b96d4;
+    text-align: center;
+    padding: 2em 0;
+    margin-top: 10px;
+}
+
+
+    a { text-decoration : none; color : #000; }
+    a:link, a:hover, a:active { color: #000; }
