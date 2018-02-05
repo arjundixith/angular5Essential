@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule,Validators,FormGroup,FormBuilder} from '@angular/forms';
-import {Router} from "@angular/router";
+import {Router,NavigationStart} from "@angular/router";
+import 'rxjs/add/operator/filter'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,17 +19,32 @@ export class LoginComponent implements OnInit {
       'psw' : [null, Validators.required],
     
     });
+
+   
   }
-  ngOnInit() {}
+  ngOnInit() {
+    // this.checkAuth();
+  }
 
    onLogin(loginData){
        if(loginData.uname=="arjun" && loginData.psw=="arjun@123"){
-         alert("success");
+        localStorage.setItem("user", loginData);
          this.router.navigate(['/dashboard']);
-         
-       }else{
-         alert("please enter correct user name and password")
+         return true;
        }
+       return false;
+  }
+
+  checkAuth(){
+    debugger;
+    this.router.events.subscribe(event => {
+      if(event instanceof NavigationStart) {
+        if(localStorage.getItem("user")==null){
+          this.router.navigate(['/login']);
+        }
+      }
+      
+    });
   }
 
 }

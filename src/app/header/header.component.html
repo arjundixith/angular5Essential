@@ -1,8 +1,12 @@
 <header>
-      <nav>
+      <nav style="display: inline;">
           <a routerLink="/dashboard">Dashbaord</a>
-          <a routerLink="/login">Create Expenses</a>
+          <a routerLink="/expense_crud">Create Expenses</a>
           <a href="#">Show Expenses</a>
           
       </nav>
+
+      <a (click)="onLogout()" class="btn btn-info btn-lg pull-right">
+          <span class="fa-sign-out" ></span> Log out
+        </a>
 </header>
