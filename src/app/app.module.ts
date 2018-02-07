@@ -12,10 +12,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {logout} from './_services/logout.service';
 import { ExpenseCrudComponent } from './expense_track/expense-crud/expense-crud.component'
 import { DataTablesModule } from 'angular-datatables';
-import { HttpModule } from '@angular/http';
-
+import { HttpModule,JsonpModule  } from '@angular/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import * as $ from 'jquery';
+import { CreateUserComponent } from './expense_track/create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import * as $ from 'jquery';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
-    ExpenseCrudComponent
+    ExpenseCrudComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,9 @@ import * as $ from 'jquery';
     // Including the ReactiveFormsModule in our application
     ReactiveFormsModule,
     DataTablesModule,
-    HttpModule
+    HttpModule,
+    JsonpModule ,
+    NgbModule.forRoot()
   ],
   providers: [logout],
   bootstrap: [AppComponent]

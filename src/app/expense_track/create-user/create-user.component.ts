@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
-
 import { HttpModule, JsonpModule } from '@angular/http';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 class Person {
   id: number;
@@ -12,13 +12,12 @@ class Person {
   lastName: string;
 }
 
-
 @Component({
-  selector: 'app-expense-crud',
-  templateUrl: './expense-crud.component.html',
-  styleUrls: ['./expense-crud.component.scss']
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.scss']
 })
-export class ExpenseCrudComponent implements OnInit {
+export class CreateUserComponent implements OnInit {
   closeResult: string;
   
 
@@ -54,6 +53,5 @@ export class ExpenseCrudComponent implements OnInit {
      
     });
   }
-    
 
 }
