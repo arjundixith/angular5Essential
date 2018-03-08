@@ -4,7 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
+import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 class Person {
   id: number;
@@ -19,12 +19,13 @@ class Person {
 })
 export class CreateUserComponent implements OnInit {
   closeResult: string;
-  
+  user : FormGroup;
 
   dtOptions: DataTables.Settings = {};
   persons: Person[] = [];
   dtTrigger: Subject<any> = new Subject();
-  constructor(private http: Http,private modalService: NgbModal) { }
+
+  constructor(public fb: FormBuilder,private http: Http,private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -38,6 +39,12 @@ export class CreateUserComponent implements OnInit {
         // Calling the DT trigger to manually render the table
         this.dtTrigger.next();
       });
+
+      this.user = this.fb.group({
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+          email: ['', Validators.required],
+        });
   }
 
   private extractData(res: Response) {
@@ -46,12 +53,16 @@ export class CreateUserComponent implements OnInit {
   }
 
   open(content) {
-    debugger;
+    
     this.modalService.open(content).result.then((result) => {
-     
+      debugger;
     }, (reason) => {
-     
+      debugger;
     });
+  }
+
+  createUserSubmit({ value, valid }){
+debugger;
   }
 
 }

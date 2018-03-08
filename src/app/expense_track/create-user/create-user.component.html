@@ -36,29 +36,38 @@
   
   
   <ng-template #content let-c="close" let-d="dismiss">
-    <form class="container" novalidate>
+    <form class="container" (ngSubmit)="createUserSubmit(user);" [formGroup]="user" novalidate>
       <fieldset>
         <div class="form-group">
           <label>First Name</label>
-          <input type="text"
+          <input type="text" name='firstName' formControlName="firstName"
                  class="form-control">
+        </div>
+        <div class="error" *ngIf="user.get('firstName').touched && user.get('firstName').hasError('required')">
+          Name is required
         </div>
     
         <div class="form-group">
           <label>Last Name</label>
           <input type="text"
-                 class="form-control">
+          name='lastName' formControlName="lastName" class="form-control">
+        </div>
+        <div class="error" *ngIf="user.get('lastName').touched && user.get('lastName').hasError('required')">
+          lastName is required
         </div>
       </fieldset>
     
       <div class="form-group">
         <label>Email</label>
         <input type="email"
-               class="form-control">
+        name='email' formControlName="email" class="form-control">
+      </div>
+      <div class="error" *ngIf="user.get('email').touched && user.get('email').hasError('required')">
+        email is required
       </div>
     
       <div class="form-group">
-        <button class="btn btn-primary"> submit </button>
+        <button class="btn btn-primary" [disabled]="user.invalid"> submit </button>
       </div>
     </form>
   </ng-template>
